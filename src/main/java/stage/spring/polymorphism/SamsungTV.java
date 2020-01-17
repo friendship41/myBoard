@@ -6,12 +6,12 @@ public class SamsungTV implements TV {
 		System.out.println("SamsungTV 객체 생성");
 	}
 	
-	public void start() {
+	public void init() {
 		System.out.println("객체 초기화 작업처리");
 	}
 	
 	public void stop() {
-		System.out.println("객체 삭제전 처리할 로직");
+		System.out.println("객체 삭제");
 	}
 	
 	public void powerOn() {
