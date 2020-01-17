@@ -19,7 +19,7 @@ class TVUser {
 		AbstractApplicationContext factory = new GenericXmlApplicationContext("applicationContext.xml");
 		
 		TV tv = factory.getBean(SamsungTV.class);
-		System.out.println(tv.getClass().getName());
+//		System.out.println(tv.getClass().getName());
 		
 		tv.powerOn();
 		tv.volumeUp();
