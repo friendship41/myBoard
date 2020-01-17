@@ -16,8 +16,43 @@
  				<value>서울시 종로구 묘동</value>
  				<value>서울시 강서구 방화동</value>
  				<value>수원시 팔달구 우만동</value>
+ 				<value>수원시 팔달구 우만동</value>
+ 				<value>수원시 팔달구 우만동</value>
  			</list>
  		</property>
+ 		<property name="addressMap">
+ 			<map>
+ 				<entry>
+ 					<key><value>홍길동</value></key>
+ 					<value>율도국</value>
+ 				</entry>
+ 				<entry>
+ 					<key><value>손오공</value></key>
+ 					<value>화과산</value>
+ 				</entry>
+ 				<entry>
+ 					<key><value>나</value></key>
+ 					<value>서울</value>
+ 				</entry>
+ 			</map>
+ 		</property>
+ 		<property name="addressProperties">
+ 			<props>
+ 				<prop key="나">서울</prop>
+ 				<prop key="너">대구</prop>
+ 				<prop key="우리">부산</prop>
+ 			</props>
+ 		</property>
+ 		<property name="addressSet">
+ 			<set value-type="java.lang.String">
+ 				<value>서울시 종로구 묘동</value>
+ 				<value>서울시 강서구 방화동</value>
+ 				<value>서울시 팔달구 우만동</value>
+ 				<value>서울시 팔달구 우만동</value>
+ 				<value>서울시 팔달구 우만동</value>
+ 			</set>
+ 		</property>
  	</bean>
+ 	
  
 </beans>
