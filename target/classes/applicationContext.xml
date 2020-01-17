@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="tv" class="stage.spring.polymorphism.SamsungTV">
-		<property name="speaker" ref="apple"/>
-		<property name="price" value="250000"/>
-	</bean>
+	<bean id="tv" class="stage.spring.polymorphism.SamsungTV" p:price="250000" p:speaker-ref="sony" />
 	<bean id="sony" class="stage.spring.polymorphism.SonySpeaker"/>
 	<bean id="apple" class="stage.spring.polymorphism.AppleSpeaker"/>
 
