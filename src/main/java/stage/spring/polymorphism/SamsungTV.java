@@ -2,16 +2,15 @@ package stage.spring.polymorphism;
 
 public class SamsungTV implements TV {
 	
+	private SonySpeaker speaker;
+	
 	public SamsungTV() {
 		System.out.println("SamsungTV 객체 생성");
 	}
 	
-	public void init() {
-		System.out.println("객체 초기화 작업처리");
-	}
-	
-	public void stop() {
-		System.out.println("객체 삭제");
+	public SamsungTV(SonySpeaker speaker) {
+		System.out.println("SamsungTV 객체 생성2");
+		this.speaker = speaker;
 	}
 	
 	public void powerOn() {
@@ -23,10 +22,10 @@ public class SamsungTV implements TV {
 	}
 
 	public void volumeUp() {
-		System.out.println("SamsungTV 볼륨을 올린다.");
+		speaker.volumeUp();
 	}
 
 	public void volumeDown() {
-		System.out.println("SamsungTV 볼륨을 내린다.");
+		speaker.volumeDown();
 	}
 }

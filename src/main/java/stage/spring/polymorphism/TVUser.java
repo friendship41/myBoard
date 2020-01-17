@@ -1,7 +1,6 @@
 package stage.spring.polymorphism;
 
 import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 class TVUser {
@@ -18,15 +17,13 @@ class TVUser {
 //		스프링 기능을 이용한 낮은 결합도 구조
 		AbstractApplicationContext factory = new GenericXmlApplicationContext("applicationContext.xml");
 		
-		TV tv1 = factory.getBean(SamsungTV.class);
-		TV tv2 = factory.getBean(SamsungTV.class);
-		TV tv3 = factory.getBean(SamsungTV.class);
+		TV tv = factory.getBean(SamsungTV.class);
 //		System.out.println(tv.getClass().getName());
 		
-//		tv.powerOn();
-//		tv.volumeUp();
-//		tv.volumeDown();
-//		tv.powerOff();
+		tv.powerOn();
+		tv.volumeUp();
+		tv.volumeDown();
+		tv.powerOff();
 		
 		factory.close();
 	}
