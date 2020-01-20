@@ -64,10 +64,15 @@
 	<bean id="sony" class="stage.spring.polymorphism.SonySpeaker"></bean>
  -->
  
+<!-- 
  	<bean id="myLifeBean" class="stage.spring.lifecycle.MyLifeBeanImpl" init-method="init">
  		<property name="greeting"><value>Hello</value></property>
  	</bean>
  	
  	<bean class="stage.spring.lifecycle.CustomBeanPostProcessor"/>
+ 	
+-->
+
+	<context:component-scan base-package="stage.spring.web"></context:component-scan>
  
 </beans>
