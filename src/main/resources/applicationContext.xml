@@ -74,5 +74,12 @@
 -->
 
 	<context:component-scan base-package="stage.spring.web"></context:component-scan>
- 
+	
+<!-- 
+	<bean id="userService" class="stage.spring.web.user.impl.UserServiceImpl">
+		<property name="userDAO" ref="userDAO"/>
+	</bean>
+	<bean id="userDAO" class="stage.spring.web.user.impl.UserDAO"/>
+-->
+
 </beans>

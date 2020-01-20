@@ -123,7 +123,7 @@ public class BoardDAO
 		}
 		finally 
 		{
-			JDBCUtil.disConnect(pstmt, con);
+			JDBCUtil.disConnect(rs, pstmt, con);
 		}
 		return boardVO;
 	}
@@ -160,7 +160,7 @@ public class BoardDAO
 		}
 		finally 
 		{
-			JDBCUtil.disConnect(pstmt, con);
+			JDBCUtil.disConnect(rs, pstmt, con);
 		}
 		return list;
 	}
