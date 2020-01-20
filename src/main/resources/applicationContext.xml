@@ -66,6 +66,8 @@
  
  	<bean id="myLifeBean" class="stage.spring.lifecycle.MyLifeBeanImpl" init-method="init">
  		<property name="greeting"><value>Hello</value></property>
- 	</bean> 	
+ 	</bean>
+ 	
+ 	<bean class="stage.spring.lifecycle.CustomBeanPostProcessor"/>
  
 </beans>
