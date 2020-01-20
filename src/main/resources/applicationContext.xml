@@ -58,8 +58,14 @@
  	</bean>
 -->
 
+<!-- 
 	<context:component-scan base-package="stage.spring.polymorphism"></context:component-scan>
 
-	<bean id="sony" class="stage.spring.polymorphism.SonySpeaker"></bean> 	
+	<bean id="sony" class="stage.spring.polymorphism.SonySpeaker"></bean>
+ -->
+ 
+ 	<bean id="myLifeBean" class="stage.spring.lifecycle.MyLifeBeanImpl" init-method="init">
+ 		<property name="greeting"><value>Hello</value></property>
+ 	</bean> 	
  
 </beans>
