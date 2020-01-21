@@ -87,8 +87,9 @@
 	<bean id="log" class="stage.spring.web.common.Log4jAdvice"/>
 	<aop:config>
 		<aop:pointcut expression="execution(* stage.spring.web..*Impl.*(..))" id="allPointCut"/>
+		<aop:pointcut expression="execution(* stage.spring.web..*Impl.get*(..))" id="getPointCut"/>
 		<aop:aspect ref="log">
-			<aop:before method="printLogging" pointcut-ref="allPointCut"/>
+			<aop:before method="printLogging" pointcut-ref="getPointCut"/>
 		</aop:aspect>
 	</aop:config>
 
