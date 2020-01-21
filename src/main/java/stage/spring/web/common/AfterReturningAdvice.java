@@ -3,7 +3,6 @@ package stage.spring.web.common;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Service;
 
 import stage.spring.web.user.UserVO;
@@ -12,10 +11,7 @@ import stage.spring.web.user.UserVO;
 @Aspect
 public class AfterReturningAdvice 
 {
-	@Pointcut("execution(* stage.spring.web..*Impl.get*(..))")
-	public void getPointCut() {}
-	
-	@AfterReturning(pointcut = "getPointCut()", returning = "returnObj")
+	@AfterReturning(pointcut = "PointcutCommon.getPointCut()", returning = "returnObj")
 	public void afterLog(JoinPoint joinPoint, Object returnObj)
 	{
 		String method = joinPoint.getSignature().getName();

@@ -3,7 +3,6 @@ package stage.spring.web.common;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 
@@ -11,10 +10,7 @@ import org.springframework.util.StopWatch;
 @Aspect
 public class AroundAdvice 
 {
-	@Pointcut("execution(* stage.spring.web..*Impl.*(..))")
-	public void allPointCut() {}
-	
-	@Around("allPointCut()")
+	@Around("PointcutCommon.allPointCut()")
 	public Object aroundLog(ProceedingJoinPoint joinPoint) throws Throwable
 	{
 		String method = joinPoint.getSignature().getName();
