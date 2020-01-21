@@ -90,6 +90,7 @@
 -->
 
 	<!-- AOP 관련 -->
+<!-- 
 	<bean id="before" class="stage.spring.web.common.BeforeAdvice"/>
 	<bean id="afterReturning" class="stage.spring.web.common.AfterReturningAdvice"/>
 	<bean id="afterThrowing" class="stage.spring.web.common.AfterThrowingAdvice"/>
@@ -98,17 +99,19 @@
 	<aop:config>
 		<aop:pointcut expression="execution(* stage.spring.web..*Impl.*(..))" id="allPointCut"/>
 		<aop:pointcut expression="execution(* stage.spring.web..*Impl.get*(..))" id="getPointCut"/>
-		<!-- 
 		<aop:aspect ref="afterReturning">
 			<aop:after-returning method="afterLog" pointcut-ref="getPointCut" returning="returnObj"/>
 		</aop:aspect>
 		<aop:aspect ref="afterThrowing">
 			<aop:after-throwing method="exceptionLog" pointcut-ref="allPointCut" throwing="e"/>
 		</aop:aspect>
-		 -->
 		<aop:aspect ref="around">
 			<aop:around method="aroundLog" pointcut-ref="allPointCut"/>
 		</aop:aspect>
 	</aop:config>
+-->
+
+
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 </beans>
