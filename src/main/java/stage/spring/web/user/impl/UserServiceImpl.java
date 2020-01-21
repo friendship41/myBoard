@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import stage.spring.web.user.UserService;
 import stage.spring.web.user.UserVO;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService
 {
 	@Autowired
