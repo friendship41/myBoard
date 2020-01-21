@@ -75,6 +75,7 @@
  	
 -->
 
+	<!-- 컴포넌트 스캔 -->
 	<context:component-scan base-package="stage.spring.web"></context:component-scan>
 	
 <!-- 
@@ -84,12 +85,29 @@
 	<bean id="userDAO" class="stage.spring.web.user.impl.UserDAO"/>
 -->
 
+<!-- 
 	<bean id="log" class="stage.spring.web.common.Log4jAdvice"/>
+-->
+
+	<!-- AOP 관련 -->
+	<bean id="before" class="stage.spring.web.common.BeforeAdvice"/>
+	<bean id="afterReturning" class="stage.spring.web.common.AfterReturningAdvice"/>
+	<bean id="afterThrowing" class="stage.spring.web.common.AfterThrowingAdvice"/>
+	<bean id="after" class="stage.spring.web.common.AfterAdvice"/>
+	<bean id="around" class="stage.spring.web.common.AroundAdvice"/>
 	<aop:config>
 		<aop:pointcut expression="execution(* stage.spring.web..*Impl.*(..))" id="allPointCut"/>
 		<aop:pointcut expression="execution(* stage.spring.web..*Impl.get*(..))" id="getPointCut"/>
-		<aop:aspect ref="log">
-			<aop:before method="printLogging" pointcut-ref="getPointCut"/>
+		<!-- 
+		<aop:aspect ref="afterReturning">
+			<aop:after-returning method="afterLog" pointcut-ref="getPointCut" returning="returnObj"/>
+		</aop:aspect>
+		<aop:aspect ref="afterThrowing">
+			<aop:after-throwing method="exceptionLog" pointcut-ref="allPointCut" throwing="e"/>
+		</aop:aspect>
+		 -->
+		<aop:aspect ref="around">
+			<aop:around method="aroundLog" pointcut-ref="allPointCut"/>
 		</aop:aspect>
 	</aop:config>
 

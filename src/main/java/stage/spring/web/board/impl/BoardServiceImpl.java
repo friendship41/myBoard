@@ -16,6 +16,7 @@ public class BoardServiceImpl implements BoardService
 	
 	@Override
 	public void insertBoard(BoardVO boardVO) {
+//		throw new IllegalArgumentException("에러가 났습니다 삐약삐약 뺙뺙");
 		boardDAO.insertBoard(boardVO);
 	}
 
