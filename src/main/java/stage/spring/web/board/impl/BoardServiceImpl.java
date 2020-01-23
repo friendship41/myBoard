@@ -12,12 +12,13 @@ import stage.spring.web.board.BoardVO;
 public class BoardServiceImpl implements BoardService
 {
 	@Autowired
-	private BoardDAO boardDAO;
+	private BoardDAOSpring boardDAO;
 	
 	@Override
 	public void insertBoard(BoardVO boardVO) {
 //		throw new IllegalArgumentException("에러가 났습니다 삐약삐약 뺙뺙");
 		boardDAO.insertBoard(boardVO);
+//		boardDAO.insertBoard(boardVO);
 	}
 
 	@Override
