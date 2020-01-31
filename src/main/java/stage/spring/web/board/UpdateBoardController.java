@@ -1,15 +1,17 @@
-package stage.spring.web.controller;
+package stage.spring.web.board;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import stage.spring.web.board.BoardVO;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import stage.spring.web.board.impl.BoardDAO;
 
 public class UpdateBoardController implements Controller
 {
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) 
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
 	{
 		int seq = Integer.parseInt(request.getParameter("seq"));
 
@@ -21,7 +23,10 @@ public class UpdateBoardController implements Controller
 		BoardDAO boardDAO = new BoardDAO();
 		boardDAO.updateBoard(vo);
 		
-		return "getBoard.do?seq="+seq;
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("getBoard.do?seq="+seq);
+		
+		return mav;
 	}
 
 }

@@ -1,15 +1,17 @@
-package stage.spring.web.controller;
+package stage.spring.web.board;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import stage.spring.web.board.BoardVO;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import stage.spring.web.board.impl.BoardDAO;
 
 public class DeleteBoardController implements Controller
 {
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) 
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
 	{
 		BoardVO boardVO = new BoardVO();
 		boardVO.setSeq(Integer.parseInt(request.getParameter("seq")));
@@ -17,7 +19,10 @@ public class DeleteBoardController implements Controller
 		BoardDAO boardDAO = new BoardDAO();
 		boardDAO.deleteBoard(boardVO);
 		
-		return "getBoardList.do";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("getBoardList.do");
+		
+		return mav;
 	}
 
 }

@@ -1,15 +1,17 @@
-package stage.spring.web.controller;
+package stage.spring.web.board;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import stage.spring.web.board.BoardVO;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import stage.spring.web.board.impl.BoardDAO;
 
 public class GetBoardController implements Controller
 {
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) 
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
 	{
 		int seq = Integer.parseInt(request.getParameter("seq"));
 
@@ -18,8 +20,11 @@ public class GetBoardController implements Controller
 		BoardDAO boardDAO = new BoardDAO();
 		BoardVO board = boardDAO.getBoard(vo);
 		
-		request.setAttribute("board", board);
-		return "getBoard";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("board", board);
+		mav.setViewName("getBoard.jsp");
+		
+		return mav;
 	}
 
 }
