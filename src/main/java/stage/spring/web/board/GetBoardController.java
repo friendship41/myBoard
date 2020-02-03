@@ -1,28 +1,21 @@
 package stage.spring.web.board;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 
 import stage.spring.web.board.impl.BoardDAO;
 
-public class GetBoardController implements Controller
+@Controller
+public class GetBoardController
 {
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
+	@RequestMapping("/getBoard.do")
+	public ModelAndView getBoard(BoardVO vo, BoardDAO boardDAO, ModelAndView mav) 
 	{
-		int seq = Integer.parseInt(request.getParameter("seq"));
-
-		BoardVO vo = new BoardVO();
-		vo.setSeq(seq);
-		BoardDAO boardDAO = new BoardDAO();
 		BoardVO board = boardDAO.getBoard(vo);
-		
-		ModelAndView mav = new ModelAndView();
+
 		mav.addObject("board", board);
-		mav.setViewName("getBoard");
+		mav.setViewName("getBoard.jsp");
 		
 		return mav;
 	}

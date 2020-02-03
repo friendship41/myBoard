@@ -1,30 +1,19 @@
 package stage.spring.web.board;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import stage.spring.web.board.impl.BoardDAO;
 
-public class InsertBoardController implements Controller
+@Controller
+public class InsertBoardController
 {
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
+	@RequestMapping(value = "/insertBoard.do")
+	public String insertBoard(BoardVO vo, BoardDAO boardDAO)
 	{
-		BoardVO vo = new BoardVO();
-		vo.setTitle(request.getParameter("title"));
-		vo.setWriter(request.getParameter("writer"));
-		vo.setContent(request.getParameter("content"));
-		
-		BoardDAO boardDAO = new BoardDAO();
 		boardDAO.insertBoard(vo);
 		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:getBoardList.do");
-		
-		return mav;
+		return "getBoardList.do";
 	}
 
 }

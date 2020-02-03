@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import stage.spring.web.board.BoardService;
 import stage.spring.web.board.BoardVO;
 
+/*
 @Service("boardService")
 public class BoardServiceImpl implements BoardService
 {
@@ -42,3 +43,4 @@ public class BoardServiceImpl implements BoardService
 	}
 
 }
+*/

@@ -1,40 +1,32 @@
 package stage.spring.web.user;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 
 import stage.spring.web.user.impl.UserDAO;
 
-public class LoginController implements Controller
+@Controller
+public class LoginController
 {
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
-	{
+	@RequestMapping("/login.do")
+	public ModelAndView login(HttpServletRequest request, UserVO vo, UserDAO userDAO, ModelAndView mav) 
+	{	
 		HttpSession session = request.getSession();
 		
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		
-		UserVO vo = new UserVO();
-		vo.setId(id);
-		vo.setPassword(password);
-		
-		UserDAO userDAO = new UserDAO();
 		UserVO user = userDAO.getUser(vo);
 		
-		ModelAndView mav = new ModelAndView();
 		if(user !=null)
 		{
-			session.setAttribute("id", id);
-			mav.setViewName("redirect:getBoardList.do");
+			session.setAttribute("id", user.getId());
+			mav.setViewName("getBoardList.do");
 		}
 		else
 		{
-			mav.setViewName("redirect:login.jsp");
+			mav.setViewName("login.jsp");
 		}
 		return mav;
 	}
