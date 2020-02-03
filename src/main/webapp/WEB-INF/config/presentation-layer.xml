@@ -24,4 +24,10 @@
 	<bean id="updateBoard" class="stage.spring.web.board.UpdateBoardController"></bean>
 	<bean id="deleteBoard" class="stage.spring.web.board.DeleteBoardController"></bean>
 
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
 </beans>

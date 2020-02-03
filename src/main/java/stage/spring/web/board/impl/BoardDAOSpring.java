@@ -1,7 +1,5 @@
 package stage.spring.web.board.impl;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import stage.spring.web.board.BoardVO;
-import stage.spring.web.common.JDBCUtil;
 
 @Repository
 public class BoardDAOSpring {

@@ -30,11 +30,11 @@ public class LoginController implements Controller
 		if(user !=null)
 		{
 			session.setAttribute("id", id);
-			mav.setViewName("getBoardList.do");
+			mav.setViewName("redirect:getBoardList.do");
 		}
 		else
 		{
-			mav.setViewName("login.jsp");
+			mav.setViewName("redirect:login.jsp");
 		}
 		return mav;
 	}

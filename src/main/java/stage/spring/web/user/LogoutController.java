@@ -16,7 +16,7 @@ public class LogoutController implements Controller
 		session.invalidate();
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("login.do");
+		mav.setViewName("redirect:login.do");
 		return mav;
 	}
 
