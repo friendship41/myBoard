@@ -1,6 +1,5 @@
 package stage.spring.web.user;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -10,11 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LogoutController
 {
 	@RequestMapping("/logout.do")
-	public String logout(HttpServletRequest request) 
+	public String logout(HttpSession session) 
 	{
-		HttpSession session = request.getSession();
+		session.setAttribute("id", null);
 		session.invalidate();
-		
 		return "login.do";
 	}
 

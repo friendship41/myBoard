@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>글 등록</h1>
-<a href="logout.do">로그아웃</a>
+<h3>${id.name}님 환영합니다 &nbsp;&nbsp;<a href="logout.do">로그아웃</a></h3>
 <hr>
 <form action="insertBoard.do" method="post">
 	<table border="1">

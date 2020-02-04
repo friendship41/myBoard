@@ -13,7 +13,7 @@
 	<table border="1">
 		<tr>
 			<td>아이디</td>
-			<td><input type="text" name="id" required="required"/></td>
+			<td><input type="text" name="id" required="required" value="${userVO.id}"/></td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>

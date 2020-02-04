@@ -24,7 +24,8 @@ public class BoardDAO
 	private final String BOARD_DELETE = "delete myboard where seq=?";
 	private final String BOARD_GET = "select * from myboard where seq=?";
 	private final String BOARD_LIST = "select * from myboard order by seq desc";
-	
+	private final String BOARD_SEARCH_TITLE_LIST = "select * from myboard where title like ? order by seq desc";
+	private final String BOARD_SEARCH_CONTENT_LIST = "select * from myboard where content like ? order by seq desc";
 	
 	public void insertBoard(BoardVO boardVO)
 	{
@@ -165,6 +166,53 @@ public class BoardDAO
 		return list;
 	}
 	
+	public List<BoardVO> searchBoardList(String condition, String keyword, BoardVO vo)
+	{
+		System.out.println("JDBC로 searchBoardList() 기능 처리");
+		
+		List<BoardVO> list = new ArrayList<BoardVO>();
+		
+		
+		try {
+			con = JDBCUtil.getConnection();
+			if(condition.equals("TITLE"))
+			{
+				pstmt = con.prepareStatement(BOARD_SEARCH_TITLE_LIST);				
+			}
+			else if(condition.equals("CONTENT"))
+			{
+				pstmt = con.prepareStatement(BOARD_SEARCH_CONTENT_LIST);
+			}
+			else
+			{
+				return list;
+			}
+			pstmt.setString(1, "%"+keyword+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				BoardVO boardVO = new BoardVO();
+				boardVO.setSeq(rs.getInt("SEQ"));
+				boardVO.setTitle(rs.getString("TITLE"));
+				boardVO.setWriter(rs.getString("WRITER"));
+				boardVO.setContent(rs.getString("CONTENT"));
+				boardVO.setRegDate(rs.getDate("REGDATE"));
+				boardVO.setCnt(rs.getInt("CNT"));
+				list.add(boardVO);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			JDBCUtil.disConnect(rs, pstmt, con);
+		}
+		return list;
+	}
 	
 	
 

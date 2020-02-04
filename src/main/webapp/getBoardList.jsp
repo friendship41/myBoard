@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>회원제 게시판</h1>
-<h3>테스트 회원님 환영합니다. <a href="logout.do">로그아웃</a></h3>
+<h3>${id.name}님 환영합니다 &nbsp;&nbsp;<a href="logout.do">로그아웃</a></h3>
 <hr>
 <!-- 검색 시작 -->
 <form action="getBoardList.do" method="post">
@@ -17,8 +17,9 @@
 		<tr>
 			<td>
 				<select name="searchCondition">
-					<option value="TITLE">제목</option>
-					<option value="CONTENT">내용</option>
+					<c:forEach var="condition" items="${conditionMap}">
+						<option value="${condition.value}">${condition.key}</option>
+					</c:forEach>
 				</select>
 				<input type="text" name="searchKeyword" required="required"/>
 				<input type="submit" value="검색"/>

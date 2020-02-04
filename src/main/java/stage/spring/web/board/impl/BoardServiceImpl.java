@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import stage.spring.web.board.BoardService;
 import stage.spring.web.board.BoardVO;
 
-/*
+
 @Service("boardService")
 public class BoardServiceImpl implements BoardService
 {
 	@Autowired
-	private BoardDAOSpring boardDAO;
+	private BoardDAO boardDAO;
 	
 	@Override
 	public void insertBoard(BoardVO boardVO) {
@@ -42,5 +42,9 @@ public class BoardServiceImpl implements BoardService
 		return boardDAO.getBoardList(boardVO);
 	}
 
+	@Override
+	public List<BoardVO> searchBoardList(String condition, String keyword, BoardVO vo) {
+		return boardDAO.searchBoardList(condition, keyword, vo);
+	}
+
 }
-*/
