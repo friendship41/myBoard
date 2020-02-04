@@ -10,7 +10,7 @@
 <h1>글 등록</h1>
 <h3>${id.name}님 환영합니다 &nbsp;&nbsp;<a href="logout.do">로그아웃</a></h3>
 <hr>
-<form action="insertBoard.do" method="post">
+<form action="insertBoard.do" method="post" enctype="multipart/form-data">
 	<table border="1">
 		<tr>
 			<td>제목</td>
@@ -23,6 +23,10 @@
 		<tr>
 			<td>내용</td>
 			<td><textarea name="content"></textarea></td>
+		</tr>
+		<tr>
+			<td>업로드</td>
+			<td><input type="file" name="uploadFile"></td>
 		</tr>
 		<tr>
 			<td colspan="2"><input type="submit" value="등록"></td>

@@ -24,8 +24,8 @@ public class BoardDAO
 	private final String BOARD_DELETE = "delete myboard where seq=?";
 	private final String BOARD_GET = "select * from myboard where seq=?";
 	private final String BOARD_LIST = "select * from myboard order by seq desc";
-	private final String BOARD_SEARCH_TITLE_LIST = "select * from myboard where title like ? order by seq desc";
-	private final String BOARD_SEARCH_CONTENT_LIST = "select * from myboard where content like ? order by seq desc";
+	private final String BOARD_SEARCH_TITLE_LIST = "select * from myboard where title like '%'||?||'%' order by seq desc";
+	private final String BOARD_SEARCH_CONTENT_LIST = "select * from myboard where content like '%'||?||'%' order by seq desc";
 	
 	public void insertBoard(BoardVO boardVO)
 	{
@@ -187,7 +187,7 @@ public class BoardDAO
 			{
 				return list;
 			}
-			pstmt.setString(1, "%"+keyword+"%");
+			pstmt.setString(1, keyword);
 			
 			rs = pstmt.executeQuery();
 			

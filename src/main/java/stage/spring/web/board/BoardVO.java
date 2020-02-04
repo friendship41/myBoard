@@ -2,13 +2,27 @@ package stage.spring.web.board;
 
 import java.sql.Date;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BoardVO {
+	@XmlAttribute
 	private int seq;
 	private String title;
 	private String writer;
 	private String content;
 	private Date regDate;
 	private int cnt;
+	@JsonIgnore
+	@XmlTransient
+	private MultipartFile uploadFile;
 	
 	
 	public int getSeq() {
@@ -46,6 +60,12 @@ public class BoardVO {
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 	
 	

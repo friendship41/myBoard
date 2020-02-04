@@ -21,6 +21,10 @@ public class LoginController
 	public String login(HttpSession session, UserVO vo, UserDAO userDAO, Model model) 
 	{
 		UserVO user = userDAO.getUser(vo);
+		if(vo.getId() == null || vo.getId().equals(""))
+		{
+			throw new IllegalAccessError("아이디는 입력되어야합니다");
+		}
 		if(user !=null)
 		{
 			session.setAttribute("id", user);

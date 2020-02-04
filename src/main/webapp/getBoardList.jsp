@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판</title>
+<title><spring:message code="message.board.list.mainTitle"/></title>
 </head>
 <body>
-<h1>회원제 게시판</h1>
-<h3>${id.name}님 환영합니다 &nbsp;&nbsp;<a href="logout.do">로그아웃</a></h3>
+<h1><spring:message code="message.board.list.mainTitle"/></h1>
+<h3>${id.name}<spring:message code="message.board.list.welcomeMsg"/> &nbsp;&nbsp;<a href="logout.do">로그아웃</a></h3>
 <hr>
 <!-- 검색 시작 -->
 <form action="getBoardList.do" method="post">
@@ -22,7 +23,7 @@
 					</c:forEach>
 				</select>
 				<input type="text" name="searchKeyword" required="required"/>
-				<input type="submit" value="검색"/>
+				<input type="submit" value="<spring:message code="message.board.list.search.condition.btn"/>"/>
 			</td>
 		</tr>
 	</table>
@@ -31,11 +32,11 @@
 <!-- 검색 종료 -->
 <table border="1">
 	<tr>
-		<th>글번호</th>
-		<th>제목</th>
-		<th>작성자</th>
-		<th>등록일</th>
-		<th>조회수</th>
+		<th><spring:message code="message.board.list.table.head.seq"/></th>
+		<th><spring:message code="message.board.list.table.head.title"/></th>
+		<th><spring:message code="message.board.list.table.head.writer"/></th>
+		<th><spring:message code="message.board.list.table.head.regDate"/></th>
+		<th><spring:message code="message.board.list.table.head.cnt"/></th>
 	</tr>
 	<c:forEach var="board" items="${boardList}">
 		<tr>
@@ -48,6 +49,6 @@
 	</c:forEach>
 </table>
 <hr>
-<a href="insertBoard.jsp">글등록</a>&nbsp;&nbsp;&nbsp;
+<a href="insertBoard.jsp"><spring:message code="message.board.list.link.insertBoard"/></a>
 </body>
 </html>
