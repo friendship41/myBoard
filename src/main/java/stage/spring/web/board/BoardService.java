@@ -8,5 +8,5 @@ public interface BoardService {
 	void deleteBoard(BoardVO boardVO);
 	BoardVO getBoard(BoardVO boardVO);
 	List<BoardVO> getBoardList(BoardVO boardVO);
-	List<BoardVO> searchBoardList(String condition, String keyword, BoardVO vo);
+//	List<BoardVO> searchBoardList(String condition, String keyword, BoardVO vo);
 }

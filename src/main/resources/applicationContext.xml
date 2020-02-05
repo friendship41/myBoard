@@ -80,7 +80,7 @@
 -->
 
 	<!-- 컴포넌트 스캔 -->
-	<context:component-scan base-package="stage.spring.web"></context:component-scan>
+	<context:component-scan base-package="stage.spring.web"/>
 	
 <!-- 
 	<bean id="userService" class="stage.spring.web.user.impl.UserServiceImpl">
@@ -161,5 +161,14 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
 	</aop:config>	
 
+
+	<!-- 마이바티스 -->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sessionFactory"/>
+	</bean>
 
 </beans>

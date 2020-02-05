@@ -13,7 +13,7 @@ import stage.spring.web.board.BoardVO;
 public class BoardServiceImpl implements BoardService
 {
 	@Autowired
-	private BoardDAO boardDAO;
+	private BoardDAOMybatis boardDAO;
 	
 	@Override
 	public void insertBoard(BoardVO boardVO) {
@@ -42,9 +42,9 @@ public class BoardServiceImpl implements BoardService
 		return boardDAO.getBoardList(boardVO);
 	}
 
-	@Override
-	public List<BoardVO> searchBoardList(String condition, String keyword, BoardVO vo) {
-		return boardDAO.searchBoardList(condition, keyword, vo);
-	}
+//	@Override
+//	public List<BoardVO> searchBoardList(String condition, String keyword, BoardVO vo) {
+//		return boardDAO.searchBoardList(condition, keyword, vo);
+//	}
 
 }

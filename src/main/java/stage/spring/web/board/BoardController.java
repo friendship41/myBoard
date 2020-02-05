@@ -41,20 +41,20 @@ public class BoardController
 	}
 	
 	@RequestMapping("/getBoardList.do")
-	public String getBoardList(BoardVO vo, Model model,
-			@RequestParam(value = "searchCondition", defaultValue = "TITLE", required = false) String condition,
-			@RequestParam(value = "searchKeyword", defaultValue = "", required = false) String keyword) 
+	public String getBoardList(BoardVO vo, Model model) 
 	{
 		List<BoardVO> boardList;
 		
-		if(!keyword.equals(""))
+		System.out.println(vo.getSearchCondition());
+		System.out.println(vo.getSearchKeyword());
+		
+		if(vo.getSearchKeyword() == null || vo.getSearchKeyword().equals(""))
 		{
-			boardList = boardService.searchBoardList(condition, keyword, vo);
+			vo.setSearchCondition("TITLE");
+			vo.setSearchKeyword("");
 		}
-		else
-		{
-			boardList = boardService.getBoardList(vo);
-		}
+		boardList = boardService.getBoardList(vo);
+		
 		model.addAttribute("boardList", boardList);
 		return "getBoardList.jsp";
 	}
